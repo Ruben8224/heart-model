@@ -16,4 +16,4 @@ jobs:
     - name: pip install
       run: python install -r requirements.txt
     - name: train model
-      run: python model/train.py
+      run: pip model/train.py
