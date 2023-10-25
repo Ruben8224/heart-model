@@ -37,3 +37,4 @@ jobs:
       run: sed -i 's/{github.sha}/${{ github.sha }}/g' manifests/k8s.yml
     - name: show k8s.yml 
       run: cat manifests/k8s.yml
+
