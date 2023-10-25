@@ -16,7 +16,7 @@ spec:
       containers:
       - name: ruben8224-container
         #image: gcr.io/tensorflow-serving/resnet
-        image: docker.io/ruben8224/fastapiml:tagname
+        image: docker.io/{docker_user}/{model_name}:{github.sha}
         ports:
         - containerPort: 80
 ---
