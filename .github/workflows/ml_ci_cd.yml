@@ -40,11 +40,11 @@ jobs:
     - name: update model name in k8 
       run: sed -i 's/{model_name}/${{secrets.MODEL_NAME}}/g' manifest/k8s.yml
     - name: update _ by - 
-      run: sed -i 's/_/-/g' manifests/k8s.yml
+      run: sed -i 's/_/-/g' manifest/k8s.yml
     - name: update sha in k8
-      run: sed -i 's/{github.sha}/${{ github.event.client_payload.sha }}/g' manifests/k8s.yml
+      run: sed -i 's/{github.sha}/${{ github.event.client_payload.sha }}/g' manifest/k8s.yml
     - name: show k8s.yml 
-      run: cat manifests/k8s.yml
+      run: cat manifest/k8s.yml
     - uses: okteto/context@2.7.0
       with:
         token: ${{secrets.OKTETO_TOKEN }}
@@ -55,5 +55,5 @@ jobs:
         KUBECONFIG: ${{ steps.namespace.outputs.kubeconfig }}
       with:
         namespace: ${{secrets.OKTETO_NAMESPACE }}
-        manifest: manifests/k8s.yml
+        manifest: manifest/k8s.yml
         tag: ${{ secrets.DOCKER_USERNAME }}/${{secrets.MODEL_NAME}}:${{ github.event.client_payload.sha }}
